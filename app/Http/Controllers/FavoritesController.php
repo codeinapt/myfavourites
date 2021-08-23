@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\favorites;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class FavoritesController extends Controller
-{
+
+class FavoritesController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,7 @@ class FavoritesController extends Controller
      */
     public function index()
     {
-        //
+        return view('project.list');
     }
 
     /**
@@ -22,9 +24,9 @@ class FavoritesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+
+        return view('project.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class FavoritesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $user = User::create(request(['name', 'theme', 'url']));
     }
 
     /**

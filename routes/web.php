@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\FavoritesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', function () {
 Route::get('/', HomeController::class)->middleware('auth');
 Route::get('project', [GeneralController::class,'index'])->middleware('auth');
 
+
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');
@@ -40,6 +42,18 @@ Route::get('/login', [SessionController::class, 'create'])
 Route::post('/login', [SessionController::class, 'store']) 
     ->name('login.store');
 
+/*Route::get('/list/create', [FavoritesController::class,'create']);
+
+Route::get('/list', function () {
+        return view('project.list');
+    });
+*/
+Route::resource('list', FavoritesController::class);
+
+
 Route::get('/logout', [SessionController::class, 'destroy']) 
     ->middleware('auth')
     ->name('login.destroy');
+
+
+

@@ -1,23 +1,8 @@
 @extends('layouts.plantilla')
 
+@section('title', 'index')
+
 @section('content')
-    <h1>Bienvenido a tu pagina de favoritos!</h1>
+    <h1 style="font-family:helvetica", class="text-center pt-24 ">Bienvenido a tus de favoritos!</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyFavourites.</title>
-    <!-- favicon -->
-    <!-- estilos -->
-</head>
-<body>
-    <!-- header -->
-    <!-- nav -->
-    
-    <!-- footer -->
-
-    <!--script -->
-</body>
-</html>
+@endsection

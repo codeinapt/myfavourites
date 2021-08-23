@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,29 @@ use App\Http\Controllers\GeneralController;
 |
 */
 
-Route::get('/', HomeController::class);
-Route::get('project', [GeneralController::class,'index']);
+Route::get('/', function () {
+    return view('index');
+})->middleware('auth');
 
+Route::get('/', HomeController::class)->middleware('auth');
+Route::get('project', [GeneralController::class,'index'])->middleware('auth');
+
+Route::get('/register', [RegisterController::class, 'create'])
+    ->middleware('guest')
+    ->name('register.index');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->name('register.store');
+
+
+
+Route::get('/login', [SessionController::class, 'create']) 
+    ->middleware('guest')
+    ->name('login.index');
+
+Route::post('/login', [SessionController::class, 'store']) 
+    ->name('login.store');
+
+Route::get('/logout', [SessionController::class, 'destroy']) 
+    ->middleware('auth')
+    ->name('login.destroy');

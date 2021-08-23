@@ -7,7 +7,7 @@
 <div class="w-75 p-3 border border-secondary me-auto bg-light" style="margin-top: 40px; margin-left:5%; margin-right: 10%;">
     <h1 style="font-family:helvetica margin-top: 100px;" class="text-center">Agregar Favoritos</h1>
 
-    <form class="mt-4" method="POST" action="">
+    <form class="form-ad" action="{{ url('/list') }}" method="post" >
       @csrf
         
         <div class="form-floating mb-3">

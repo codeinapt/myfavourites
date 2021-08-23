@@ -38,7 +38,9 @@ class FavoritesController extends Controller {
     public function store(Request $request)
     {
         
-        $user = User::create(request(['name', 'theme', 'url']));
+        $datosList = request()->except('_token');
+        favorites::insert($datosList);
+         return response()->json($datosList);
     }
 
     /**
